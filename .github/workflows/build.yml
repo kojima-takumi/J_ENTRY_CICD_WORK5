@@ -1,0 +1,31 @@
+name: Electron Build
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN3 }} #TOKENの設定
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.14.0'  # Node.jsのバージョンを指定
+
+    - name: Install dependencies 
+      run: npm install
+
+    - name: Build
+      run: npm run dist
+
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-build
+        path: dist/
