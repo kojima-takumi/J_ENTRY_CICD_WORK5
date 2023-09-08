@@ -1,5 +1,6 @@
-const add = require('./addNumbers.js');
+// 2つの数値を足し算する関数
+function addNumbers(num1, num2) {
+    return num1 + num2;
+  }
 
-test('add 1 + 2 to equal 3', () => {
-    expect(add(1, 2)).toBe(3);
-});
+  modules.export = addNumbers
